@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+	--primary: #8a2be2; /* Vibrant purple */
+	--secondary: #00ffff; /* Cyan */
+	--accent: #ff00ff; /* Magenta */
+	--dark: #0f0f1a; /* Very dark blue-black */
+	--darker: #070711; /* Even darker for contrast */
+	--light: #e0e0ff; /* Light lavender */
+	--gray: #9090b0; /* Muted purple-gray */
+	--card-bg: #16162c; /* Slightly lighter than dark for cards */
+	--transition: all 0.3s ease;
+	--font-heading: "Poppins", sans-serif;
+	--font-body: "Inter", sans-serif;
+	--glow: 0 0 10px rgba(138, 43, 226, 0.5);
+	--transition: all 0.3s ease;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-bg {
+	background-color: rgba(15, 15, 26, 0.8);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+	transition: var(--transition);
+}
+
+.active {
+	color: var(--light);
+}
+
+.bg-scroll {
+	background: linear-gradient(135deg, #8a2be2, #ff00ff);
+	transition: width 0.1s ease;
+	box-shadow: var(--glow);
+}
+.bg-preloader {
+	background-color: var(--darker);
+}
+.bg-loader {
+	border: 5px solid rgba(138, 43, 226, 0.2);
+	border-top-color: var(--primary);
+	border-radius: 50%;
+	animation: spin 1s infinite linear;
+	box-shadow: var(--glow);
+}
+.bg-cursor {
+	background-color: var(--primary);
+	pointer-events: none;
+	mix-blend-mode: difference;
+	transform: translate(-50%, -50%);
+	transition: transform 0.1s;
+}
+
+.bg-cursor-follower {
+	border: 1px solid var(--primary);
+	pointer-events: none;
+	z-index: 9998;
+	transform: translate(-50%, -50%);
+	transition:
+		transform 0.3s ease,
+		width 0.3s ease,
+		height 0.3s ease;
+}
+
+.nav-link {
+	@apply relative font-medium text-gray-400 transition-all duration-300;
+}
+
+.nav-link::after {
+	content: "";
+	@apply absolute left-0 -bottom-[5px] w-0 h-[2px]
+         bg-gradient-to-r from-[#8A2BE2] to-[#FF00FF]
+         transition-all duration-300;
+}
+
+.nav-link:hover {
+	@apply text-white;
+}
+
+.nav-link:hover::after {
+	@apply w-full;
+}
+
+.hero {
+	@apply min-h-screen flex items-center relative overflow-hidden;
+}
+.hero::before {
+	content: "";
+	background: radial-gradient(circle at top right, rgba(138, 43, 226, 0.1), transparent 60%);
+	@apply absolute top-0 left-0 w-full h-full pointer-events-none;
+}

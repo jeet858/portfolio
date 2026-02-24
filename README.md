@@ -1,70 +1,36 @@
-# urFolio v2
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-[![GitHub license](https://img.shields.io/github/license/alsiam/urFolio)](https://github.com/alsiam/urFolio/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/alsiam/urFolio)](https://github.com/alsiam/urFolio/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/alsiam/urFolio)](https://github.com/alsiam/urFolio/issues)
-[![GitHub forks](https://img.shields.io/github/forks/alsiam/urFolio)](https://github.com/alsiam/urFolio/network)
+## Getting Started
 
-A free and open-source portfolio template for developers, now powered by Next.js. View the live demo: [urfolio.vercel.app](https://urfolio.vercel.app)
+First, run the development server:
 
-## Table of Contents
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- [Features](#features)
-- [Demo](#demo)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Features
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- Clean and modern design
-- Responsive layout
-- Developer-friendly
-- Migrated to Next.js for improved performance and maintainability
-- Sections for projects, skills, and contact information
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Demo
+## Learn More
 
-Visit the live demo: [urfolio.vercel.app](https://urfolio.vercel.app)
+To learn more about Next.js, take a look at the following resources:
 
-## Installation
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-To get started, follow these steps:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-1. Clone the repository: `git clone https://github.com/alsiam/urFolio.git`
-2. Navigate to the project folder: `cd urFolio`
-3. Install dependencies: `npm install`
-4. Run the development server: `npm run dev`
-5. Open your browser and visit [http://localhost:3000](http://localhost:3000)
+## Deploy on Vercel
 
-## Usage
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-1. Replace placeholder content in the `src/pages/index.js` file with your information.
-2. Customize the styles in the `styles` directory to match your preferences.
-3. Add your projects, skills, and other relevant information in the appropriate sections.
-
-## Customization
-
-- **Colors:** Modify the color scheme in the `styles/globals.css` file.
-- **Fonts:** Change the fonts by updating the `styles/globals.css` file.
-- **Images:** Replace the placeholder images in the `public/img` directory with your own.
-
-## Contributing
-
-Contributions are welcome! Please check the [Contribution Guidelines](CONTRIBUTING.md) for more details.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- Thanks to [Open Source Initiative](https://opensource.org/) for their guidelines on open-source licensing.
-- Special thanks to [Vercel](https://vercel.com/) for providing free hosting for the live demo.
-
----
-
-**Feel free to use this template for your own portfolio and showcase your work! If you encounter any issues or have suggestions for improvement, please open an issue or submit a pull request. Happy coding!**
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
