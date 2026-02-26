@@ -57,8 +57,7 @@ export default function Hero() {
             <span className="typed-text" ref={typedRef}>John Doe</span>
           </h1>
           <p className="hero-subtitle fade-up">
-            A creative designer and developer focused on crafting clean &amp; user-friendly experiences.
-            I transform ideas into digital reality with cutting-edge technology and aesthetic design.
+            A software developer dedicated to crafting efficient, user-centric digital experiences. I bridge design and technology to turn innovative ideas into robust, end-to-end solutions.
           </p>
           <div className="hero-cta fade-up">
             <a href="#portfolio" className="btn btn-primary">
