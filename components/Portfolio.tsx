@@ -1,111 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import projects from "@/constants/project";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import ProjectCard from "./ProjectCard";
 
-const projects = [
-	{
-		id: 1,
-		category: "web",
-		icon: "fas fa-globe",
-		name: "Quranium Main Website",
-		tech: "Next.js, Tailwind CSS, Axios, SEO",
-		title: "Quranium Main Website",
-		catLabel: "Web Development",
-		colorClass: "portfolio-item-1",
-	},
-	{
-		id: 2,
-		category: "web",
-		icon: "fas fa-search",
-		name: "QRNScan Blockchain Explorer",
-		tech: "Next.js, Tailwind CSS, Axios, Blockchain APIs",
-		title: "QRNScan",
-		catLabel: "Web Development",
-		colorClass: "portfolio-item-2",
-	},
-	{
-		id: 3,
-		category: "web",
-		icon: "fas fa-share-alt",
-		name: "SocialFi Platform",
-		tech: "Next.js, Tailwind CSS, Axios",
-		title: "SocialFi",
-		catLabel: "Web Development",
-		colorClass: "portfolio-item-3",
-	},
-	{
-		id: 4,
-		category: "web",
-		icon: "fas fa-wallet",
-		name: "Q-Safe Wallet Extension",
-		tech: "Vue.js, Web3, Smart Contracts",
-		title: "Q-Safe Wallet",
-		catLabel: "Web3 Development",
-		colorClass: "portfolio-item-4",
-	},
-	{
-		id: 5,
-		category: "app",
-		icon: "fas fa-mobile-alt",
-		name: "QINFI Super App",
-		tech: "React Native, NestJS, TypeORM, Blockchain RPC",
-		title: "QINFI",
-		catLabel: "App Development",
-		colorClass: "portfolio-item-5",
-	},
-	{
-		id: 6,
-		category: "app",
-		icon: "fas fa-tools",
-		name: "Subidha Services App",
-		tech: "Flutter, Razorpay, Authentication",
-		title: "Subidha",
-		catLabel: "App Development",
-		colorClass: "portfolio-item-6",
-	},
-	{
-		id: 7,
-		category: "app",
-		icon: "fas fa-comments",
-		name: "Lyk Social Media App",
-		tech: "Flutter, Cross-Platform UI",
-		title: "Lyk",
-		catLabel: "App Development",
-		colorClass: "portfolio-item-7",
-	},
-	{
-		id: 8,
-		category: "app",
-		icon: "fas fa-taxi",
-		name: "GoRide Cab Booking App",
-		tech: "Flutter, Real-Time Booking",
-		title: "GoRide",
-		catLabel: "App Development",
-		colorClass: "portfolio-item-8",
-	},
-	{
-		id: 9,
-		category: "web",
-		icon: "fas fa-file-medical",
-		name: "Prescription Generator Website",
-		tech: "Next.js, TypeScript, Tailwind CSS, tRPC",
-		title: "Prescription Generator",
-		catLabel: "Web Development",
-		colorClass: "portfolio-item-9",
-	},
-];
 
+interface project {
+    id: number;
+    category: string;
+    icon: string;
+    name: string;
+    tech: string;
+    title: string;
+    catLabel: string;
+    colorClass: string;
+    link: string;
+}
 const filters = [
 	{ value: "all", label: "All" },
 	{ value: "web", label: "Web Development" },
 	{ value: "app", label: "App Development" },
-	// { value: 'ui', label: 'UI/UX Design' },
+	{ value: 'Others', label: 'Others' },
 ];
 
 export default function Portfolio() {
 	const [activeFilter, setActiveFilter] = useState("all");
+	const [filtered, setFiltered] = useState(projects);
+	const [openProject, setOpenProject] = useState<project | null>(null);
+	
 
-	const filtered = projects.filter((p) => activeFilter === "all" || p.category === activeFilter);
+	useEffect(()=>{
+		const filtered = projects.filter((p) => activeFilter === "all" || p.category === activeFilter);
+		setFiltered(filtered);
+
+		// Re-observe the new elements so they get the 'active' class for the fade-up animation
+		setTimeout(() => {
+			const fadeElements = document.querySelectorAll('.portfolio-item.fade-up');
+			const observer = new IntersectionObserver(
+				(entries, observerInstance) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+							observerInstance.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
+			fadeElements.forEach((el) => observer.observe(el));
+		}, 50);
+	},[activeFilter])
 
 	return (
 		<section className="portfolio section" id="portfolio">
@@ -132,10 +77,14 @@ export default function Portfolio() {
 							<div className="portfolio-overlay">
 								<h3 className="portfolio-title">{project.title}</h3>
 								<p className="portfolio-category">{project.catLabel}</p>
-								<a href="#" className="portfolio-link">
+								{/* <button onClick={() => setOpenProject(project)} className="portfolio-link mb-4!">
+									View Details <i className="fas fa-arrow-right"></i>
+								</button> */}
+								<Link href={project.link} target="_blank" className="portfolio-link">
 									View Project <i className="fas fa-arrow-right"></i>
-								</a>
+								</Link>
 							</div>
+							{openProject && <ProjectCard project={project} />}
 						</div>
 					))}
 				</div>

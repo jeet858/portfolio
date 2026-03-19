@@ -28,7 +28,7 @@ export default function Contact() {
               {[
                 { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'Kolkata, West Bengal, India 700126' },
                 { icon: 'fas fa-envelope', label: 'Email', value: 'jeetmajumder858@gmail.com' },
-                { icon: 'fas fa-phone-alt', label: 'Phone', value: '+91 8617741681' },
+                { icon: 'fas fa-phone-alt', label: 'Phone', value: '+91 6289308350' },
               ].map((item) => (
                 <div key={item.label} className="contact-item">
                   <div className="contact-icon">
