@@ -38,13 +38,3 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
-
-## Deployment
-
-Deploy on Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jeet858/portfolio)
-
-## License
-
-MIT
